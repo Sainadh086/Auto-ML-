@@ -177,6 +177,7 @@ def ml1(request):
 			col.append(i)
 	Label = LabelName.objects.values_list('Label')[0]
 	Label = Label[0].encode('ascii')
+	print("Label in test is ",Label)
 	col.remove(Label)
 	df = pd.DataFrame()
 	if(request.method == 'POST'):
