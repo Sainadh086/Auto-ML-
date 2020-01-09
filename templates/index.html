@@ -1,0 +1,45 @@
+<html>
+        <title>
+            test env
+        </title>
+      <body>
+          {% if test1 %}
+          <center>
+            <form action = "ml1/", method ="POST">
+                {% csrf_token %}
+                <h4> If you want to enter test env click on Yes else No</h4>
+                <input type="checkbox", name="t1", value = 'Y'> Yes</input>
+                <input type="checkbox", name = "t1", value="N"> N </input>
+            </form>
+        </center>
+        {% endif %}
+
+
+
+          {% if test2 %}
+          <h3> Enter your test data</h3>
+          <form action = "ml1/", method="POST">
+            {% csrf_token %}
+              {% for i in col %}
+              {{i}}:<input type={{i}}, name = "{{i}}"></input>
+              <br><br>
+                {% endfor %}
+                <input type="submit", value="submit"></input>
+          </form>
+          {% endif %}
+
+          {% if test3 %}
+          <center>
+          <h3>The final result for the input data is {{y_pred}}</h3>
+          <h3>Thank you for staying with us!</h3>
+          <h6> The data you uploded will be deleted automatically for privacy concerns. </h6>
+          </center>
+          {% endif %}
+          {% if test4 %}
+          <center>
+            <h3> Thankyou for staying with us!</h3>
+            <h6> The data you uploded will be deleted automatically for privacy concerns. </h6>
+          </center>
+          {% endif %}
+      </body>
+</html>

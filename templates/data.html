@@ -1,0 +1,87 @@
+<html>
+<title> ml </title>
+<style>
+</style>
+{% if not z %}
+<h3>Fill all the data.</h3>
+{% endif %}
+<body>
+
+
+	<!--{% if test %}
+	<form action = 'ml1/' , method = 'post'> 
+	{% csrf_token %}
+	{% for i in cols %}
+	{{i}}:<input type={{i}} , name ={{i}}></input>
+	{% endfor %}
+	<input type = "submit", value = "Submit"></input>
+	</forms>
+	{% endif %}
+	{% if test1 %}
+	<center>
+		<h3>The test result is {{y_pred}} </h3>
+		<h3> Thank you for staying with us </h3>
+	
+	</center>
+	{% endif %}-->
+	
+	
+
+{% if z %}
+<center> 
+	<h3> Final result </h3>
+	<h4> The target column is {{label}}</h4>
+	<h4> Accuracy score on test set is {{ac1}}</h4>
+	<br><br>
+	<h4> If you want to test your own data then click on yes, if not no</h4>
+<form action ="ml/", method = "post">
+	{% csrf_token %}	
+	<input type = "checkbox", name = "test", value = "Y"> Yes </input>
+	<input type  = "checkbox", name = "test", value = "N"> No </input><br>
+	<input type = "submit", value = "submit"></input>
+</form>
+</center>
+{% endif %}
+
+
+{% if not z %}
+<h5> Enter the label name by seeing the below data </h5>
+<form action = 'ml/', method = 'post'>
+{% csrf_token %}
+Preprocess:<input type = 'checkbox' , name = "Preprocess", value = 'Y'> Yes </input>
+			
+<input type = "checkbox", name = "Preprocess", value = 'N'> No </input> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Label Name:
+<select name = "Label Name">
+{% for i in col %}
+	<option value = "{{i}}"> {{i}} </option>
+{% endfor %}
+</select>
+
+<h6>{% for j in col %}&nbsp;{% endfor %}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Choose the label name as shown in drop down column</h6>
+Split Percentage:<input type = "Split Percentage", name ="split"></input><br>
+
+<h6> Enter only numerical values. It is for test size only.<br> Choose below 25%</h6><br>
+{% for j in col%}&nbsp;{% endfor %}
+<input type ='submit' , value = "Submit"></input>
+</form>
+<h6>Notice: Advice you to use the last column as a Target column. <br> 
+If not please update your data and change it to last column.</h6>
+{% endif %}
+</body>
+
+
+
+
+<!--{% for instance in data|slice:":1"%}
+<h5> Choose the label from below Column Names</h5>
+    {% for field, value in instance.fields.items %}
+        {{ field }}
+<br>
+    {% endfor %}
+{% endfor %}-->
+
+</html>

@@ -1,0 +1,23 @@
+<html>
+<title>Upload</title>
+<center>
+<body>
+  {% if not z %}
+  <h3> Upload the csv file to the disk from any location </h3>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+  </form>
+  {% endif %}
+{% if z %}
+<h3>File uploded to the destination</h3>
+<form action ='ml'>
+<h4> Data is in your destination to know the more about data click below</h4>
+<button type="submit">Go</button>
+</form>
+{% endif %}
+
+</body>
+</center>
+</html>
