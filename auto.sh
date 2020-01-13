@@ -1,6 +1,7 @@
 #!/bin/bash
 conda deactivate
 heroku login
+heroku create varshan
 git init
 heroku git:remote -a varshan
 git add .
